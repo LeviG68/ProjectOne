@@ -5,6 +5,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <link rel="stylesheet" href="css/style.css">
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -14,13 +15,13 @@
       <div class="row">
         <div class="col s12">
             <nav class="nav-extended">
-                <div class="nav-wrapper">
+                <div class="nav-wrapper purple darken-4">
                 <a href="#!" class="brand-logo">Logo</a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a><input placeholder="City / State" id="search" class="right input-field" type="search" required></a></li>
-                    <li><a><input placeholder="Zip" id="search" class="right input-field" type="search" required></a></li>
-                    <li><label class="label-icon" for="search"><i class="material-icons">search</i></label></li>
-                </ul> 
+                <ul class="right input-field">
+                    <li><a><input placeholder="City / State" id="cityState" class="right input-field" type="search" required></a></li>
+                    <li><a><input placeholder="Zip" id="zip" class="right input-field" type="search" required></a></li>
+                </ul>
+                    <label id="search" class="label-icon" for="search"><i class="material-icons magGlass">search</i></label>
                 </div>
             </nav>
         </div> 
@@ -37,9 +38,11 @@
                         </tr>
                     </thead>
                     <tbody id="yelp">
-                        <td>Stuff</td>
-                        <td>More Stuff</td>
-                        <td>Even More Stuff</td>
+                        <tr>
+                            <td>Stuff</td>
+                            <td>More Stuff</td>
+                            <td>Even More Stuff</td>
+                        </tr>
                     </tbody>
                 </table>
                 <ul class="pagination">
@@ -65,10 +68,12 @@
                               <th>Ticket Price</th>
                           </tr>
                       </thead>
-                      <tbody id="yelp">
-                          <td>Stuff</td>
-                          <td>More Stuff</td>
-                          <td>Even More Stuff</td>
+                      <tbody id="event">
+                          <tr>
+                            <td>Stuff</td>
+                            <td>More Stuff</td>
+                            <td>Even More Stuff</td>
+                          </tr>
                       </tbody>
                   </table>
                   <ul class="pagination">
