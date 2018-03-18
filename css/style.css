@@ -1,0 +1,12 @@
+.col.s12 {
+    padding: 0;
+    margin: 0;
+}
+
+nav .brand-logo {
+    padding-left: 20px;
+}
+
+i .material-icons .magGlass {
+    padding-right: 20px;
+}
