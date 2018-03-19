@@ -1,3 +1,7 @@
+/* * {
+    outline: 1px solid red !important;
+   } */
+
 .col.s12 {
     padding: 0;
     margin: 0;
@@ -9,4 +13,24 @@ nav .brand-logo {
 
 i .material-icons .magGlass {
     padding-right: 20px;
+}
+img
+{
+height: 120px;
+width: 120px;
+margin: 5px;
+border-style: solid;
+border-color: lightgray;
+border-width: 1px;
+}
+
+#infoDiv {
+    display:inline-block;
+    padding: 10px;
+}
+#eventResults {
+    border-style: solid;
+    border-color: grey;
+    border-width: 1px;
+    margin: 5px;
 }
