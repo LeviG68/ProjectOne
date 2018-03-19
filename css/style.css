@@ -30,7 +30,8 @@ border-width: 1px;
 }
 #eventResults {
     border-style: solid;
-    border-color: grey;
+    border-bottom-color: grey;
+    border-top-color: grey;
     border-width: 1px;
     margin: 5px;
 }
