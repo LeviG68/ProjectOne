@@ -24,7 +24,7 @@ var catId = [
             "singles_solcial",
             // "outdoors_recreation",
             "performing_arts",
-            // "sports"
+            "sports"
             ]
 
 var lat;
@@ -36,7 +36,7 @@ $("button").on("click", function(event) {
   eventCity =  $("#cityState").val().trim();
   postalCode =  $("#zip").val().trim();
 
-  var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" + + postalCode + eventCity + "&category=" + catId + "&date=This Week" + sort;
+  var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" + + postalCode + eventCity + "&category=" + catId + "&date=Today" + sort;
 
 
   $.ajax({
