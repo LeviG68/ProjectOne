@@ -31,7 +31,9 @@ border-width: 1px;
 #eventResults {
     border-style: solid;
     border-bottom-color: grey;
-    border-top-color: grey;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     border-width: 1px;
     margin: 5px;
 }
