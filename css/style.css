@@ -1,0 +1,13 @@
+h1{
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+.navWrapper.center-align{
+height: 70%;
+}
+#logoContainer{
+font-family: 'Courier New', Courier, monospace;
+font-weight: 200px;
+}
