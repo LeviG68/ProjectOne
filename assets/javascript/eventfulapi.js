@@ -30,7 +30,7 @@ var catId = [
 var lat;
 var long;
 var geoCode;
-$("button").on("click", function(event) {
+$("#search").on("click", function(event) {
   $("#event").empty();
   console.log("click worked")
   eventCity =  $("#cityState").val().trim();
