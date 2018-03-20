@@ -6,10 +6,10 @@
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
       <link rel="stylesheet" href="css/style.css">
-      
-
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    
     </head>
 
     <body>
@@ -17,18 +17,18 @@
         <div class="col s12">
             <nav class="nav-extended">
                 <div class="nav-wrapper purple darken-4">
-                <a href="#!" class="brand-logo">Logo</a>
-                <ul class="right input-field">
-                    <li><a><input placeholder="City / State" id="cityState" class="right input-field" type="search" required></a></li>
-                    <li><a><input placeholder="Zip" id="zip" class="right input-field" type="search" required></a></li>
-                </ul>
-                    <label id="search" class="label-icon" for="search"><i class="material-icons magGlass">search</i></label>
+                    <a href="#!" class="brand-logo">Logo</a>
+                    <ul class="right">
+                        <li><a><input placeholder="City / State" id="cityState" class="right input-field"  type="search" required></a></li>
+                        <li><a><input placeholder="Zip" id="zip" class="right input-field"  type="search" required></a></li>
+                        <li><label id="search" class="label-icon" for="search"><i class="right material-icons magGlass">search</i></label></li>
+                    </ul>
                 </div>
             </nav>
         </div> 
       </div>
       <div class="row">
-          <div class="col s12 l6">
+          <div class="col s12">
               <div class="card-panel">
                 <table>
                     <thead>
@@ -44,7 +44,7 @@
                 </table>
                 <ul class="pagination">
                     <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                    <li class="active"><a href="#!">1</a></li>
+                    <li class="active purple darken-4"><a href="#!">1</a></li>
                     <li class="waves-effect"><a href="#!">2</a></li>
                     <li class="waves-effect"><a href="#!">3</a></li>
                     <li class="waves-effect"><a href="#!">4</a></li>
@@ -53,29 +53,21 @@
                 </ul>
             </div>
           </div>
-      <!-- </div> -->
-      <!-- <div class="row"> -->
-            <div class="col s12 l6">
+      </div> 
+      <div class="row"> 
+            <div class="col s12">
                 <div class="card-panel">
                   <table>
                       <thead>
-                          <tr>
-                              <th>Date</th>
-                              <th>Event Name</th>
-                              <th>Ticket Price</th>
-                          </tr>
+                        <th>Events</th>
                       </thead>
                       <tbody id="event">
-                          <tr>
-                            <td>Stuff</td>
-                            <td>More Stuff</td>
-                            <td>Even More Stuff</td>
-                          </tr>
+
                       </tbody>
                   </table>
                   <ul class="pagination">
                       <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                      <li class="active"><a href="#!">1</a></li>
+                      <li class="active purple darken-4"><a href="#!">1</a></li>
                       <li class="waves-effect"><a href="#!">2</a></li>
                       <li class="waves-effect"><a href="#!">3</a></li>
                       <li class="waves-effect"><a href="#!">4</a></li>
@@ -85,10 +77,19 @@
               </div>
             </div>
         </div>
+        <div>
+            <section class="card-panel" id="map">
+            </section>
+        </div>
       </div>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
+<<<<<<< HEAD
       <script src="assets/javascript/googleapi.js"></script>
+=======
+      <script type="text/javascript" src="assets/javascript/materialize.min.js"></script>
+      <script type="text/javascript" src="assets/javascript/eventfulapi.js"></script> 
+>>>>>>> test
     </body>
   </html>
