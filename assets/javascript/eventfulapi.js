@@ -13,7 +13,7 @@ var sort = "&sort_order=popularity";
 var distance;
 var postalCode;
 var eventFound = false;
-console.log(eventCity)
+// console.log(eventCity)
 var catId = [
             "music",
             "comedy",
@@ -56,7 +56,7 @@ var eventVenueName;
 
 $("#search").on("click", function(event) {
   $("#event").empty();
-  console.log("click worked")
+  // console.log("click worked")
   eventCity =  $("#cityState").val().trim();
 
   // postalCode =  $("#zip").val().trim();
