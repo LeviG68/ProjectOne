@@ -59,6 +59,17 @@ $("#search").on("click", function(event) {
 
   // postalCode =  $("#zip").val().trim();
 
+  if (!distance){
+    errorMessage = $("#error").text("Please select a distance to increase the accuracy of your results and try your search again!");
+    $("#error").show();
+    function verifyDistance() {
+      setTimeout(function(){
+        $("#error").hide();;
+         }, 3000);
+    }
+    verifyDistance();
+  }
+
   var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" +  eventCity + "&category=" + catId + "&date=Today" + sort + "&within=" + distance;
 
 
@@ -73,16 +84,16 @@ $("#search").on("click", function(event) {
         console.log(JSON.parse(response));
 
       // if no results for search, display error message
-      if (result.events == null|| !distance) {
+      if (result.events == null || eventCity=="") {
             
               errorMessage = $("#error").text("Please enter a vaild City, State and try your search again");
               $("#error").show();
-              function myFunction() {
+              function verifyCitystate() {
                 setTimeout(function(){
                   $("#error").hide();;
                    }, 3000);
               }
-              myFunction();
+              verifyCitystate();
 
         }
           else {
