@@ -26,8 +26,14 @@ border-color: lightgray;
 border-width: 1px;
 }
 
+.infoGoogDiv {
+    display: inline-block;
+    padding: 10px;
+}
+
+
 #infoDiv {
-    display:inline-block;
+    display: inline-block;
     padding: 10px;
 }
 #eventResults {
@@ -38,4 +44,19 @@ border-width: 1px;
     border-right: none;
     border-width: 1px;
     margin: 5px;
+}
+
+.eventGoogleResults {
+    border-style: solid;
+    border-bottom-color: grey;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-width: 1px;
+    margin: 5px;
+}
+
+.restTitle {
+    font-size: 20px;
+    font-weight: bold;
 }

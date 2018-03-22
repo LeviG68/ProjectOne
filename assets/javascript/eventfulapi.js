@@ -12,7 +12,7 @@ var eventCity;
 var sort = "&sort_order=popularity"; 
 var postalCode;
 var eventFound = false;
-console.log(eventCity)
+// console.log(eventCity)
 var catId = [
             "music",
             "comedy",
@@ -32,7 +32,7 @@ var long;
 var geoCode;
 $("#search").on("click", function(event) {
   $("#event").empty();
-  console.log("click worked")
+  // console.log("click worked")
   eventCity =  $("#cityState").val().trim();
   postalCode =  $("#zip").val().trim();
 
@@ -83,7 +83,7 @@ $("#search").on("click", function(event) {
             
             var eventDescription = $("<p>").text(result.events.event[j].description);
             var eventImg = result.events.event[j].image;
-            console.log(eventImg)
+            // console.log(eventImg)
             var eventImage;
             var palceholderpics = [
               "assets/images/pexels-photo-89485.jpeg",
