@@ -1,11 +1,6 @@
-
-
-  main {
-    flex: 1 0 auto;
-  }
-* {
+/* * {
     outline: 1px solid red !important;
-   }
+   } */
 
 h1{
   font-family: 'Courier New', Courier, monospace;
@@ -70,6 +65,12 @@ img {
     display: inline-block;
 }
 
+.imgInfo {
+    top: 0;
+    width: 100%;
+    display: inline-block;
+ }
+
 #eventResults {
     border-style: solid;
     border-bottom-color: rgb(175, 66, 66);
@@ -103,6 +104,15 @@ img {
     height: 120px;
     width: 79%;
     background-color: grey;
-    display:inline-block; 
+    display: inline-block; 
     margin: 5px;
   }
+
+.G_maps {
+    
+    width: 77%;
+    height: 120px;
+    background-color: grey;
+    display: inline-block; 
+    margin: 5px;
+}  
