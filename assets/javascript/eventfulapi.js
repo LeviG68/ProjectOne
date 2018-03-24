@@ -122,7 +122,7 @@ $("#search").on("click", function(event) {
                 var mapcont = "map" + j;
                 var maps = $("<div class='maps' id='" + mapcont +"' >");
                 var eventTitle =  result.events.event[j].title;
-                var event =  $("<tr class='restTitle'>").html("Event: " + eventTitle)
+                var event =  $("<tr class='restTitle'>").html(eventTitle)
                 var eventUrl = "<a href="  + eveUrl + " target='_blank'>Event Website</a>" + " | ";
 
                 eventVenueName = result.events.event[j].venue_name;
@@ -224,14 +224,14 @@ $("#search").on("click", function(event) {
   // var gapiKey = "AIzaSyBs4pO79zRJlnubLykNxLO6SNNH6gWaPCA"
 
   function initMap(lat,lng,mapcont,mapUrl) {
-    var map = new google.maps.Map(document.getElementById(mapcont), {
-      zoom: 12,
+    var maper = new google.maps.Map(document.getElementById(mapcont), {
+      zoom: 15,
       center: {lat: lat, lng: lng}
     });
   
     var marker = new google.maps.Marker({
       position: {lat: lat, lng: lng},
-      map: map,
-      title: eventVenueName,
+      map: maper,
+      title: eventVenueName
     });
   }
