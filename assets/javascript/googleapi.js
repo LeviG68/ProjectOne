@@ -40,7 +40,7 @@ function displayGoogleShit() {
            var photoRef = response.results[i].photos[0].photo_reference;
            var apiKey = "&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU"       
             
-        //    photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoRef + apiKey;
+           photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoRef + apiKey;
 
         //    create event list 
             var container = $("<div class='eventGoogleResults'>");
