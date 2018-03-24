@@ -1,3 +1,16 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+* {
+    outline: 1px solid red !important;
+   }
+
 h1{
   font-family: 'Courier New', Courier, monospace;
   font-weight: 600;
@@ -42,6 +55,8 @@ border-style: solid;
 border-color: lightgray;
 border-width: 1px;
 margin: 5px;
+left: 0px;
+top: 0px;
 }
 
 .infoGoogDiv {
@@ -53,6 +68,7 @@ margin: 5px;
 #infoDiv {
     display: inline-block;
     padding: 10px;
+    width: 75%;
 }
 
 #eventResults {
@@ -85,9 +101,9 @@ margin: 5px;
 }
 
 .maps {
-    width: 120px;
+    width: 100%;
     height: 120px;
     background-color: grey;
-    display:inline-block;
+    display:inline-block; 
     margin: 5px;
   }
