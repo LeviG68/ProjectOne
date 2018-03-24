@@ -12,8 +12,8 @@ var city = "Denver";
 
 $(".material-icons").on("click", function click (event) {
 console.log(click)
-  var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" + city;
-  $.ajax({
+  // var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" + city;
+  // $.ajax({
     
       url: queryURL,
       method: "GET"
