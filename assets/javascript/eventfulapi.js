@@ -234,4 +234,5 @@ $("#search").on("click", function(event) {
       map: maper,
       title: eventVenueName
     });
+    
   }

@@ -11,6 +11,8 @@ var bizName;
 var G_Lat;
 var G_Long;
 var G_mapCont;
+var G_mapRestName;
+
 // var G_placeID;
 
 //On click functions for distance search...
@@ -35,16 +37,18 @@ $("#d5").on("click", function(event) {
 //On Click Function for City,State Search
 $("#search").on("click", function(event) {
 
-    var eventCity =  $("#cityState").val().trim();
+    var eventCities =  $("#cityState").val().trim();
 
     $("#google").empty();
 
 function displayGoogleShit() {
 
     var photoURL;
-    var apiKey1 = "&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU"
-    var apiKey2 = "&key=AIzaSyA8-jku2dgDUp9EeXdbeNBksAM4JhOkAxc"
-    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurant+" + eventCity + "&radius=" + G_distance + apiKey2;   
+    var apiKey1 = "&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU";
+    var apiKey2 = "&key=AIzaSyA8-jku2dgDUp9EeXdbeNBksAM4JhOkAxc";
+    var mapsAPIKey= "&key=AIzaSyAT4Nz9s8qxKvGCM80aQt-fCGlW4XzL3zs";
+    var apiKey3= "&key=AIzaSyBCHK89OFcTLSGG1uZBV9u-4Tc53NlqfTQ";
+    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurant+" + eventCities + "&radius=" + G_distance + apiKey3;   
 
     $.ajax({
         url: queryURL,
@@ -76,7 +80,7 @@ function displayGoogleShit() {
            var photoRef = response.results[i].photos[0].photo_reference;
            var apiKey = "&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU"       
             
-           photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoRef + apiKey2;
+           photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoRef + apiKey3;
 
         //    create event list 
             var container = $("<div class='eventGoogleResults'>");
@@ -89,6 +93,7 @@ function displayGoogleShit() {
     
             var pic = $("<img>").attr("src", photoURL);
             
+            G_mapRestName = response.results[i].name;
             bizName = $("<tr class='restTitle'>").text(response.results[i].name );
             // console.log(response.results[i].name);
             var pricing = $("<tr>").text("Price Rating: " + response.results[i].price_level);
@@ -117,44 +122,53 @@ function displayGoogleShit() {
 
             $("#google").append(container);
             //call google map function
-            G_initMap(G_Lat,G_Long,G_mapCont);
+           G_initMap(G_Lat,G_Long,G_mapCont);
 
             //safe guards in recursive function
-            if (i >= 10) {
+            if (i >= 9) {
                 return;
             }
             
             else {
                 infoToPage(i + 1);
+                // console.log(G_mapRestName);
                 
             }
 
 
-            }, 1000);            
+            }, 500);     
+            
+            
 
         }
+        //end of info to page function
         
       });
+      //end of .then Function
       
     }
     // End of "displayGoogleShit" function
     displayGoogleShit()
-    
+    // console.log(G_mapRestName)
 
     
 });
 //End of OnClick function
 
+
 //Google Map Generation function called above when information is appended to the DOM
 function G_initMap(G_Lat,G_Long,G_mapCont) {
+    // var googtitle = document.getElementById(G_mapRestName);
+    console.log(G_mapRestName);
     var map = new google.maps.Map(document.getElementById(G_mapCont), {
-      zoom: 12,
+      zoom: 15,
       center: {lat: G_Lat, lng: G_Long}
     });
   
-    var marker = new google.maps.Marker({
+    var markers = new google.maps.Marker({
       position: {lat: G_Lat, lng: G_Long},
       map: map,
-      title: bizName
+      title: G_mapRestName
+      
     });
   }
