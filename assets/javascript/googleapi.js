@@ -68,7 +68,7 @@ function displayGoogleShit() {
             G_Long = parseFloat(response.results[i].geometry.location.lng);
             // console.log(G_Lat);
             // console.log(G_Long);
-            G_mapCont = "map" + i;
+            G_mapCont = "G_maps" + i;
             
             var G_maps = $("<div class='G_maps' id='" + G_mapCont +"' >")
 
