@@ -40,14 +40,12 @@ nav .brand-logo {
 }
 
 img {
-height: 120px;
-width: 120px;
-border-style: solid;
-border-color: lightgray;
-border-width: 1px;
-margin: 5px;
-left: 0px;
-top: 0px;
+    height: 120px;
+    width: 120px;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    margin: 5px;
 }
 
 .infoGoogDiv {
@@ -56,9 +54,15 @@ top: 0px;
 }
 
 
-#infoDiv {
+.infoDiv {
     display: inline-block;
     padding: 10px;
+}
+
+.imgInfo {
+    top: 0;
+    width: 100%;
+    display: inline-block;
 }
 
 .imgInfo {
@@ -69,7 +73,7 @@ top: 0px;
 
 #eventResults {
     border-style: solid;
-    border-bottom-color: grey;
+    border-bottom-color: rgb(175, 66, 66);
     border-top: none;
     border-left: none;
     border-right: none;
@@ -97,8 +101,8 @@ top: 0px;
 }
 
 .maps {
-    width: 77%;
     height: 120px;
+    width: 79%;
     background-color: grey;
     display: inline-block; 
     margin: 5px;
