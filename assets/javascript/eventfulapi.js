@@ -224,14 +224,15 @@ $("#search").on("click", function(event) {
   // var gapiKey = "AIzaSyBs4pO79zRJlnubLykNxLO6SNNH6gWaPCA"
 
   function initMap(lat,lng,mapcont,mapUrl) {
-    var map = new google.maps.Map(document.getElementById(mapcont), {
+    var maper = new google.maps.Map(document.getElementById(mapcont), {
       zoom: 12,
       center: {lat: lat, lng: lng}
     });
   
     var marker = new google.maps.Marker({
       position: {lat: lat, lng: lng},
-      map: map,
-      title: eventVenueName,
+      map: maper,
+      title: eventVenueName
     });
+    
   }
