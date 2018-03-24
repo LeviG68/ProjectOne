@@ -34,6 +34,19 @@ $("#d5").on("click", function(event) {
     // console.log("distance" + G_distance)
   });
 
+
+  if (!G_distance){
+    errorMessage = $("#error").text("Please select a distance and try your search again!");
+    $("#error").show();
+    function verifyDistance() {
+      setTimeout(function(){
+        $("#error").hide();;
+         }, 3000);
+    }
+    verifyDistance();
+  }
+
+
 //On Click Function for City,State Search
 $("#search").on("click", function(event) {
 
