@@ -28,9 +28,14 @@ function displayGoogleShit() {
 
       .then(function(response) {
         // console.log(info);
-        // console.log(response);
+        console.log(response);
 
-        for (var i =0; i < 10; i++) {
+        // for (var i =0; i < 10; i++) {
+
+        infoToPage(0);
+        function infoToPage(i) {
+
+           setTimeout(function() {
 
            var photoRef = response.results[i].photos[0].photo_reference;
            var apiKey = "&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU"       
@@ -44,13 +49,6 @@ function displayGoogleShit() {
             var row3  = $("<tr>");
             var row4  = $("<tr>");
             var row5  = $("<tr>");
-
-
-            // $("<img>").attr("src", response.results[i].photos.height);
-            // var bizImage = response.results[i].photos[0].html_attributions;
-            // console.log(response.results[i].photos[0].photo_reference);
-            // console.log(response.results[i].id)
-            
 
             var pic = $("<img>").attr("src", photoURL);
             // console.log(response.results[i].name);
@@ -79,9 +77,15 @@ function displayGoogleShit() {
             $("#google").prepend(container);
 
 
-            // row.append(pic, bizName, googleRating, pricing)
-            // $("#google").prepend(container);
+            if (i >= 10) {
+                return;
+            }
             
+            else {
+                infoToPage(i + 1);
+            }
+
+            }, 1000);
             
 
         }
