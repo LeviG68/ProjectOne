@@ -42,14 +42,20 @@ nav .brand-logo {
 img {
 height: 120px;
 width: 120px;
-margin: 5px;
 border-style: solid;
 border-color: lightgray;
 border-width: 1px;
+margin: 5px;
 }
 
+.infoGoogDiv {
+    display: inline-block;
+    padding: 10px;
+}
+
+
 #infoDiv {
-    display:inline-block;
+    display: inline-block;
     padding: 10px;
 }
 
@@ -63,6 +69,29 @@ border-width: 1px;
     margin: 5px;
 }
 
+.eventGoogleResults {
+    border-style: solid;
+    border-bottom-color: grey;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-width: 1px;
+    margin: 5px;
+}
+
+.restTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
 #error {
     color: red;
+    margin-left: 75%;
 }
+
+.maps {
+    width: 120px;
+    height: 120px;
+    background-color: grey;
+    display:inline-block;
+    margin: 5px;
+  }

@@ -10,9 +10,10 @@
 var apiKey = "&app_key=8BZTgpMGJnMV5sF4";
 var eventCity;
 var sort = "&sort_order=popularity"; 
+var distance;
 var postalCode;
 var eventFound = false;
-console.log(eventCity)
+// console.log(eventCity)
 var catId = [
             "music",
             "comedy",
@@ -28,17 +29,50 @@ var catId = [
             ]
 
 var lat;
-var long;
+var lng;
 var geoCode;
 var errorMessage;
+var eventVenueName;
+
+
+  // get distance value
+  $("#d5").on("click", function(event) {
+    distance = 5;
+    console.log("distance" + distance)
+  });
+  $("#d10").on("click", function(event) {
+    distance = 10;
+    console.log("distance" + distance)
+  });
+  $("#d25").on("click", function(event) {
+    distance = 25;
+    console.log("distance" + distance)
+  });
+  $("#d50").on("click", function(event) {
+    distance = 50;
+    console.log("distance" + distance)
+  });
+
 
 $("#search").on("click", function(event) {
   $("#event").empty();
-  console.log("click worked")
+  // console.log("click worked")
   eventCity =  $("#cityState").val().trim();
-  postalCode =  $("#zip").val().trim();
 
-  var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" + + postalCode + eventCity + "&category=" + catId + "&date=Today" + sort;
+  // postalCode =  $("#zip").val().trim();
+
+  if (!distance){
+    errorMessage = $("#error").text("Please select a distance to increase the accuracy of your results and try your search again!");
+    $("#error").show();
+    function verifyDistance() {
+      setTimeout(function(){
+        $("#error").hide();;
+         }, 3000);
+    }
+    verifyDistance();
+  }
+
+  var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" +  eventCity + "&category=" + catId + "&date=Today" + sort + "&within=" + distance;
 
 
   $.ajax({
@@ -49,29 +83,31 @@ $("#search").on("click", function(event) {
       }).then(function(response) {
         var data = response;
         var result = JSON.parse(response);
-        console.log(JSON.parse(response));
+        // console.log(JSON.parse(response));
 
       // if no results for search, display error message
-      if (result.events == null) {
-            validSearchParam = false;
-              errorMessage = $("<div>").text("Please enter a vaild City, State and try your search again");
-              $("#error").append(errorMessage);
+      if (result.events == null || eventCity=="") {
+            
+              errorMessage = $("#error").text("Please enter a vaild City, State and try your search again");
               $("#error").show();
-              function myFunction() {
+              function verifyCitystate() {
                 setTimeout(function(){
                   $("#error").hide();;
                    }, 3000);
               }
-              myFunction();
+              verifyCitystate();
+
         }
           else {
            
             for (j=0; j < data.length; j++) {
 
               // update global variables 
-              lat = result.events.event[j].latitude;
-              long = result.events.event[j].longitude;
+              lat = parseFloat(result.events.event[j].latitude);
+              lng = parseFloat(result.events.event[j].longitude);
+
               geoCode =result.events.event[j].geocode_type;
+              
               var eveUrl = result.events.event[j].url;
               var venueUrl = result.events.event[j].venue_url
 
@@ -82,26 +118,56 @@ $("#search").on("click", function(event) {
                 var row3  = $("<tr>");
                 var row4  = $("<tr>");
                 var row5  = $("<tr>");
+                var mapcont = "map" + j;
+                var maps = $("<div class='maps' id='" + mapcont +"' >");
 
                 var eventTitle =  result.events.event[j].title;
                 var event =  $("<tr>").html("Event: " + eventTitle)
                 var eventUrl = "<a href="  + eveUrl + " target='_blank'>Event Website</a>" + " | ";
 
-                var eventVenueName = result.events.event[j].venue_name;
+                eventVenueName = result.events.event[j].venue_name;
                 var eventVenue = $("<tr>").html("Where: " + eventVenueName);
                 var venueUrl = "<a href="  + venueUrl + " target='_blank'>Venue Website</a>";
 
-                var eventCity = result.events.event[j].city_name;
-                var eventState = result.events.event[j].region_abbr;
-                var eventZipCode = result.events.event[j].postal_code;
-                var eventStart = moment(result.events.event[j].start_time).format("MMMM Do YYYY, h:mm A");
+                var eventCity = result.events.event[j].city_name + ", ";
+                    if (eventCity === null) {
+                      eventCity =" ";
+                    }
+                    else {
+                      eventCity = result.events.event[j].city_name + ", ";
+                    }
 
-                var eventAdress = $("<tr>").text("Address: " + result.events.event[j].venue_address + ", " + eventCity + ", " + eventState + ", " + eventZipCode);
+                var eventState = result.events.event[j].region_abbr + ", ";
+                    if (eventState === null) {
+                      eventState =" ";
+                    }
+                    else {
+                      eventState =  result.events.event[j].region_abbr + ", ";
+                    }
+
+                var eventZipCode = result.events.event[j].postal_code;
+                    if (eventZipCode === null) {
+                      eventZipCode =" ";
+                    }
+                    else {
+                      eventZipCode =  result.events.event[j].postal_code;
+                    }
+                
+                var eventAddr = result.events.event[j].venue_address;
+                    if (eventAddr === null) {
+                      eventAddr =" ";
+                    }
+                    else {
+                      eventAddr = result.events.event[j].venue_address + ", ";
+                    }
+
+                var eventStart = moment(result.events.event[j].start_time).format("MMMM DD YYYY, h:mm A");
+
+                var eventAdress = $("<tr>").text("Address: " + eventAddr + eventCity + eventState + eventZipCode);
                 var eventDateTime = $("<tr>").text("When: " + eventStart);
                 
-                var eventDescription = $("<p>").text(result.events.event[j].description);
+                // var eventDescription = $("<p>").text(result.events.event[j].description);
                 var eventImg = result.events.event[j].image;
-                console.log(eventImg)
                 var eventImage;
                 var palceholderpics = [
                   "assets/images/pexels-photo-89485.jpeg",
@@ -123,7 +189,7 @@ $("#search").on("click", function(event) {
                 ]
                 var randPic = palceholderpics[Math.floor(Math.random() * palceholderpics.length)];
 
-                //check for an image, if there is not one, place a stock image
+            //check for an image, if there is not one, place a stock image
                 if (eventImg != null) {
                     eventImage = $("<img>").attr("src","http:" + result.events.event[j].image.medium.url);
                   }
@@ -131,18 +197,42 @@ $("#search").on("click", function(event) {
                     eventImage = $("<img>").attr("src", randPic);
                   }
 
+
+
+                  
+            //display results 
                 row1.append(event)
                 row2.append(eventVenue)
                 row3.append(eventAdress)
                 row4.append(eventDateTime)
-                row5.append(eventUrl, venueUrl )
+                row5.append(eventUrl, venueUrl)
                 var infoDiv = $("<div id='infoDiv'>").append(row1, row2, row3,row4, row5)
                 
-                container.append(eventImage,infoDiv)
+                container.append(eventImage,maps,infoDiv)
 
-                $("#event").prepend(container);
+                $("#event").append(container);
 
+                // create map for each result            
+                initMap(lat, lng, mapcont);
+               
             }
         }
       });
     });  
+
+
+
+  // var gapiKey = "AIzaSyBs4pO79zRJlnubLykNxLO6SNNH6gWaPCA"
+
+  function initMap(lat,lng,mapcont) {
+    var map = new google.maps.Map(document.getElementById(mapcont), {
+      zoom: 15,
+      center: {lat: lat, lng: lng}
+    });
+  
+    var marker = new google.maps.Marker({
+      position: {lat: lat, lng: lng},
+      map: map,
+      title: eventVenueName
+    });
+  }
