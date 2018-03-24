@@ -122,7 +122,7 @@ $("#search").on("click", function(event) {
                 var mapcont = "map" + j;
                 var maps = $("<div class='maps' id='" + mapcont +"' >");
                 var eventTitle =  result.events.event[j].title;
-                var event =  $("<tr class='restTitle'>").html("Event: " + eventTitle)
+                var event =  $("<tr class='restTitle'>").html(eventTitle)
                 var eventUrl = "<a href="  + eveUrl + " target='_blank'>Event Website</a>" + " | ";
 
                 eventVenueName = result.events.event[j].venue_name;
@@ -225,7 +225,7 @@ $("#search").on("click", function(event) {
 
   function initMap(lat,lng,mapcont,mapUrl) {
     var maper = new google.maps.Map(document.getElementById(mapcont), {
-      zoom: 12,
+      zoom: 15,
       center: {lat: lat, lng: lng}
     });
   
