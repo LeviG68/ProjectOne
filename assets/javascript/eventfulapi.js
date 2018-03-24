@@ -120,8 +120,10 @@ $("#search").on("click", function(event) {
                 var row5  = $("<tr>");
                 var row6  = $("<tr>");
                 var mapcont = "map" + j;
-                var maps = $("<div class='maps' id='" + mapcont +"' >");
+                var mapLink = "<a href="  + "https://maps.google.com?saddr=Current+Location&daddr=" + lat + "," + lng + " target='_blank'></a>";
 
+                var maps = $("<div class='maps' id='" + mapcont +"' >")
+                $(maps).attr(mapLink);
                 var eventTitle =  result.events.event[j].title;
                 var event =  $("<tr class='restTitle'>").html(eventTitle)
                 var eventUrl = "<a href="  + eveUrl + " target='_blank'>Event Website</a>" + " | ";
@@ -209,8 +211,8 @@ $("#search").on("click", function(event) {
                 row5.append(eventUrl, venueUrl)
                 
                 var infoDiv = $("<div id='infoDiv'>").append(row1, row2, row3,row4, row5)
-              
-                container.append(eventImage, maps, infoDiv)
+                  
+                container.append(eventImage, infoDiv, maps)
 
                 $("#event").append(container);
 
