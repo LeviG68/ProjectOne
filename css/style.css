@@ -1,17 +1,8 @@
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-
-  main {
-    flex: 1 0 auto;
-  }
-* {
+ /** {
     outline: 1px solid red !important;
-   }
+   } */
 
-h1{
+h1, .brand-logo, h3{
   font-family: 'Courier New', Courier, monospace;
   font-weight: 600;
   margin: 0;
@@ -22,9 +13,21 @@ h1{
 height: 70%;
 }
 
-#logoContainer{
+#logoContainer, {
 font-family: 'Courier New', Courier, monospace;
 font-weight: 200px;
+}
+
+#intro {
+    margin-top: 20px;
+}
+
+/* #restaurants a {
+    color: white;
+} */
+
+#intro h3 {
+    text-align: justify;
 }
 
 html {
