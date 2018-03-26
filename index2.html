@@ -9,11 +9,16 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-auth.js"></script>
+
 </head>
 <body>
 
   <nav class="purple darken-4" role="navigation">
-    <h1 class="navWrapper center-align"><id="logo">DAT[R] </h1>
+    <h1 class="navWrapper center-align"><id="logo">DAT[R]</h1>
   </nav>
 
   <div class="titleBanner" id="titleBanner">
@@ -25,39 +30,47 @@
       <div class="row center">
         <h5 class="header col s12 center-align">“If I need a psychological evaluation, I’ll do it myself.” – Prince</h5>
       </div>
-      
       <div class="row">
-          <form class="col s12 m6 l6">
+          <!-- originally a form -->
+          <div class="col s12"> 
             <div class="row">
-              <div class="input-field col s12  offset-m6 offset-l6">
-                <input id="email" type="email" class="validate">
-                <label class="active" for="email">Email</label>
+              <section class="col s6">
+                <h3>Sign Up</h3>
+                <div class="input-field">
+                  <input id="email" type="email" class="validate">
+                  <label class="active" for="email">Email</label>
+                </div>
+                <div class="input-field">
+                    <input input="Password" id="password" type="password" class="validate" >
+                    <label  for="password">Password</label>
+                </div>
+                <div>
+                    <button class=" purple btn waves-effect waves-light" id="submit" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                     </button>
+                </div>
+              </section>
+              <section class="col s6">
+                <h3>Sign In</h3>
+                <div class="input-field">
+                    <input id="signInemail" type="email" class="validate">
+                    <label class="active" for="email">Email</label>
+                  </div>
+                <div class="input-field">
+                  <input input="Password" id="signInpassword" type="password" class="validate" >
+                  <label for="password">Password</label>
               </div>
-              <div class="input-field col s12 offset-m6 offset-6">
-                <input input="Password" id="password" type="password" class="validate" >
-                <label  for="password">Password</label>
-              </div>
-            </div>
-            <div class='row'>
-              <div class="col s12 m6 l6">
-                <button class=" purple btn waves-effect waves-light" type="submit" name="action">Submit
+              <div>
+              <button class=" purple btn waves-effect waves-light" id="signIn" type="submit" name="action">Sign In
                   <i class="material-icons right">send</i>
                 </button>
               </div>
+            </section>
             </div>
-          </form>
+          </div>
         </div>
     </div>
   </div>
-  <!-- <div class="carousel">
-      <a class="carousel-item" href="#one!"><img src=""></a>
-      <a class="carousel-item" href="#two!"><img src=""></a>
-      <a class="carousel-item" href="#three!"><img src=""></a>
-      <a class="carousel-item" href="#four!"><img src=""></a>
-      <a class="carousel-item" href="#five!"><img src=""></a>
-  </div> -->
-        
-
   <footer class="pageFooter purple lighten-2">
     <div class="container">
       <div class="row">
@@ -78,6 +91,7 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="assets/javascript/materialize.min.js"></script>
   <script src="assets/javascript/appland.js"></script>
+  <script src="assets/javascript/pages.js"></script>
 
   </body>
 </html>
