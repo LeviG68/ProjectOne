@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title>DAT|R</title>
+      <title>DateNight Test</title>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -12,38 +12,39 @@
       <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     </head>
     <body>
+            <div class="row">
+                    <div class="col s12">
+                        <nav class="nav-extended">
+                            <div class="nav-wrapper purple darken-4">
+                                <a href="#!" class="brand-logo hide-on-small">Logo</a>
+                                <ul class="right">
+                                        <li><a><input placeholder="City / State" id="cityState" class="right input-field"  type="search" required></a></li>
+                                        <!-- <li><a><input placeholder="Zip" id="zip" class="right input-field"  type="search" required></a></li> -->
+                                        <li>
+                                            <a class='dropdown-button btn purple darken-1' data-activates='distanceDropdown'>Distance</a>
+                                            <!-- Dropdown Structure -->
+                                            <ul id='distanceDropdown' class='dropdown-content'>
+                                                <li><a >5 miles</a></li>
+                                                <li><a >10 miles</a></li>
+                                                <li><a >25 miles</a></li>
+                                                <li><a >50 miles</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><label id="search" class="label-icon waves-effect" for="search"><i class="right material-icons magGlass">search</i></label></li>
+                                    </ul>
+                            </div>
+                        </nav>
+                    </div> 
+                  </div>
       <div class="row">
-        <div class="col s12">
-            <nav class="nav-extended">
-                <div class="nav-wrapper purple darken-4">
-                    <a href="#!" class="brand-logo">Logo</a>
-                        <ul class="right">  
-                            <li><a><input placeholder="City / State" id="cityState" class="right input-field"  type="search" required></a></li>
-                            <!-- <li><a><input placeholder="Zip" id="zip" class="right input-field"  type="search" required></a></li> -->
-                            <li>
-                                <a class='dropdown-button btn purple darken-1' data-activates='distanceDropdown'>Distance</a>
-                                <!-- Dropdown Structure -->
-                                <ul id='distanceDropdown' class='dropdown-content'>
-                                    <li><a id="d5" value="5">5 miles</a></li>
-                                    <li><a id="d10" value="10">10 miles</a></li>
-                                    <li><a id="d25" value="25">25 miles</a></li>
-                                    <li><a id="d50" value="50">50 miles</a></li>
-                                </ul>
-                            </li>
-                            <li><label id="search" class="label-icon waves-effect" for="search"><i class="right material-icons magGlass">search</i></label></li>
-                        </ul>
-                </div>
-            </nav>
-            <div id="error"></div>
-        </div> 
-      </div>
-      <div class="row">
-          <div class="col s12 m12 l6">
+            <div class="col s12 m12 l6">
               <div class="card-panel">
                 <table>
                     <thead>
                         <tr>
-                            <th>Restaurants</th>
+                            <th>Restaurant Name</th>
+                            <th>Rating</th>                            
+                            <th>Price Level</th>
                         </tr>
                     </thead>
                     <tbody id="google">
@@ -86,18 +87,15 @@
             </div>
         </div>
         <div>
-            <!-- <section class="card-panel" id="map">
-            </section> -->
+            <section class="card-panel" id="map">
+            </section>
         </div>
       </div>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
       <script src="assets/javascript/googleapi.js"></script>
       <script type="text/javascript" src="assets/javascript/materialize.min.js"></script>
       <script type="text/javascript" src="assets/javascript/eventfulapi.js"></script> 
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfnwnAUCBndGMz5DfMTV7uQaXP6MhgkgM"></script>
-    
+      <script type="text/javascript" src="assets/javascript/pages.js"></script>
     </body>
   </html>
