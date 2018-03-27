@@ -2,6 +2,11 @@
     outline: 1px solid red !important;
    } */
 
+html, body {
+    height: 100%;
+    background-image: url(//alcohol-blur-bright-95949.jpg);
+}
+
 h1, .brand-logo, h3{
   font-family: 'Courier New', Courier, monospace;
   font-weight: 600;
@@ -19,7 +24,7 @@ font-weight: 200px;
 }
 
 #intro {
-    margin-top: 20px;
+    margin-top: 100px;
 }
 
 /* #restaurants a {
@@ -110,3 +115,19 @@ top: 0px;
     display:inline-block; 
     margin: 5px;
   }
+
+#easyPaginate {
+      width:300px;
+    }
+
+.easyPaginateNav a {
+    padding:5px;
+    color: blueviolet;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.easyPaginateNav a.current {
+    font-weight:bold;
+    text-decoration:underline;
+}
