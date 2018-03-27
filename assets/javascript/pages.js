@@ -30,11 +30,11 @@ $(document).ready(function(){
     //     "pagingType": "simple"
     // });
 
-    $('#google').easyPaginate({
-        paginateElement: 'tr',
-        elementsPerPage: 3,
-        // effect: 'climb'
-    });
+    // $('#google').easyPaginate({
+    //     paginateElement: 'tr',
+    //     elementsPerPage: 3,
+    //     // effect: 'climb'
+    // });
 
     $('#event').easyPaginate({
         paginateElement: 'tr',
