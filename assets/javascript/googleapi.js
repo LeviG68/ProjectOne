@@ -128,9 +128,11 @@ function displayGoogleShit() {
             $("#google").append(container);
             //call google map function
            G_initMap(G_Lat,G_Long,G_mapCont);
+           
 
             //safe guards in recursive function
             if (i >= 9) {
+              paginateGoog();
                 return;
             }
             
@@ -143,21 +145,30 @@ function displayGoogleShit() {
             }, 500);     
             
             
-
+            
         }
-        //end of info to page function
-        
+        //end of info to page function (recursive)
+          
       });
       //end of .then Function
       
     }
     // End of "displayGoogleShit" function
-    displayGoogleShit()
+    displayGoogleShit();
 
     
+    
 });
-//End of OnClick function
 
+//End of OnClick function
+function paginateGoog() {
+  $('#google').easyPaginate({
+    paginateElement: 'div.eventGoogleResults',
+    elementsPerPage: 3,
+    // effect: 'climb'
+  });
+
+};
 
 //Google Map Generation function called above when information is appended to the DOM
 function G_initMap(G_Lat,G_Long,G_mapCont) {

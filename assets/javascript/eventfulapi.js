@@ -210,15 +210,25 @@ $("#search").on("click", function(event) {
                 row6.append(eventImage, maps)
                 container.append(row6, infoDiv)
                 $("#event").append(container);
-
             // create map for each result            
                 initMap(lat, lng, mapcont);
-               
+                paginateEvent();
+                
+                
             }
+           
         }
       });
     });  
-
+    
+    function paginateEvent() {
+      $('#event').easyPaginate({
+        paginateElement: 'div#eventResults',
+        elementsPerPage: 3
+        // effect: 'climb'
+      });
+    
+    };
 
 
   // var gapiKey = "AIzaSyBs4pO79zRJlnubLykNxLO6SNNH6gWaPCA"
