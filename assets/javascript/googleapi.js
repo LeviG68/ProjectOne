@@ -11,7 +11,13 @@ var G_Lat;
 var G_Long;
 var G_mapCont;
 var G_mapRestName;
+<<<<<<< HEAD
+var errorMessage;
 var G_distance;
+// var G_placeID;
+=======
+var G_distance;
+>>>>>>> test
 
 //On click functions for distance search...
 //NOTE: Google API restricts a maximum radius of 50,000m, hence duplicate distance at #d25 and #d50
@@ -32,9 +38,9 @@ $("#d5").on("click", function(event) {
     // console.log("distance" + G_distance)
   });
 
+
 //On Click Function for City,State Search
 $("#search").on("click", function(event) {
-
     var eventCities =  $("#cityState").val().trim();
 
     $("#google").empty();
@@ -57,16 +63,71 @@ function displayGoogleShit() {
       })
 
       .then(function(response) {
-        // console.log(info);
-        // console.log(response);
-
-        // for (var i =0; i < 10; i++) {
-
-        infoToPage(0);        
-
+        infoToPage(0);
         function infoToPage(i) {
-
            setTimeout(function() {
+<<<<<<< HEAD
+              //Google Map Shit
+              G_Lat = parseFloat(response.results[i].geometry.location.lat);
+              G_Long = parseFloat(response.results[i].geometry.location.lng);
+              // console.log(G_Lat);
+              // console.log(G_Long);
+              G_mapCont = "G_maps" + i;
+              var G_maps = $("<div class='G_maps' id='" + G_mapCont +"' >")
+              var photoRef = response.results[i].photos[0].photo_reference;
+              var apiKey = "&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU";
+              photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoRef + apiKey3;
+              //create event list 
+              var container = $("<div class='eventGoogleResults'>");
+              var row1  = $("<tr>");
+              var row2  = $("<tr>");
+              var row3  = $("<tr>");
+              var row4  = $("<tr>");
+              var row5  = $("<tr>");
+              var pic = $("<img>").attr("src", photoURL);
+              
+              G_mapRestName = response.results[i].name;
+              bizName = $("<tr class='restTitle'>").text(response.results[i].name );
+             
+              var pricing = $("<tr>").text("Price Rating: " + response.results[i].price_level);
+              
+              var bizAddess = $("<tr>").text("Address: " + response.results[i].formatted_address)
+              
+              var googleRating = $("<tr>").text("Google Rating: " + response.results[i].rating);
+              
+              var G_mapUrl ="<a href=https://maps.google.com?saddr=Current+Location&daddr=" + G_Lat + "," + G_Long + " target='_blank'>Directions</a>";
+
+              var googPlacesSite = $("<tr>").html("Google Places: " + response.results[i].photos[0].html_attributions + " | " + G_mapUrl);
+              // console.log(response.results[i].photos[0].html_attributions);
+          
+              row1.append(bizName)
+              row2.append(pricing)
+              row3.append(googleRating)
+              row4.append(bizAddess)
+              row5.append(googPlacesSite)
+
+              //dynamically create a div in the Google Body
+              var infoGoogDiv = $("<div class='infoGoogDiv'>").append(row1, row2, row3, row4, row5);
+              var G_row6 = $("<tr class='imgInfo'>");
+              G_row6.append(pic, G_maps);
+              container.append(G_row6, infoGoogDiv);
+
+              $("#google").append(container);
+              //call google map function
+              G_initMap(G_Lat,G_Long,G_mapCont);
+
+              //safe guards in recursive function
+              if (i >= 9) {
+                  return;
+                }
+                else {
+                  infoToPage(i + 1);
+                  // console.log(G_mapRestName);  
+                  }
+              }, 500);      
+            }
+            //end of info to page function
+=======
             
             //Google Map Shit
             G_Lat = parseFloat(response.results[i].geometry.location.lat);
@@ -146,16 +207,25 @@ function displayGoogleShit() {
 
         }
         //end of info to page function
+>>>>>>> test
         
-      });
-      //end of .then Function
+          });
+          //end of .then Function
       
+<<<<<<< HEAD
+        }
+        // End of "displayGoogleShit" function
+        displayGoogleShit()
+        // console.log(G_mapRestName)
+    });
+=======
     }
     // End of "displayGoogleShit" function
     displayGoogleShit()
 
     
 });
+>>>>>>> test
 //End of OnClick function
 
 
