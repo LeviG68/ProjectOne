@@ -1,5 +1,4 @@
 // CORS Bypass
-
 jQuery.ajaxPrefilter(function(options) {
     if (options.crossDomain && jQuery.support.cors) {
         options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
@@ -12,8 +11,7 @@ var G_Lat;
 var G_Long;
 var G_mapCont;
 var G_mapRestName;
-
-// var G_placeID;
+var G_distance;
 
 //On click functions for distance search...
 //NOTE: Google API restricts a maximum radius of 50,000m, hence duplicate distance at #d25 and #d50
@@ -44,11 +42,14 @@ $("#search").on("click", function(event) {
 function displayGoogleShit() {
 
     var photoURL;
-    var apiKey1 = "&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU";
-    var apiKey2 = "&key=AIzaSyA8-jku2dgDUp9EeXdbeNBksAM4JhOkAxc";
-    var mapsAPIKey= "&key=AIzaSyAT4Nz9s8qxKvGCM80aQt-fCGlW4XzL3zs";
-    var apiKey3= "&key=AIzaSyBCHK89OFcTLSGG1uZBV9u-4Tc53NlqfTQ";
-    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurant+" + eventCities + "&radius=" + G_distance + apiKey3;   
+    //Due to limitations with API restrictions we cycle 4 google API's randomly into the two calls
+    var apiArray = ["&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU", "&key=AIzaSyA8-jku2dgDUp9EeXdbeNBksAM4JhOkAxc", "&key=AIzaSyAT4Nz9s8qxKvGCM80aQt-fCGlW4XzL3zs", "&key=AIzaSyBCHK89OFcTLSGG1uZBV9u-4Tc53NlqfTQ"];
+    var apiKey = apiArray[Math.floor(Math.random() * apiArray.length)];    
+    // var apiKey = "&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU";
+    // var apiKey2 = "&key=AIzaSyA8-jku2dgDUp9EeXdbeNBksAM4JhOkAxc";
+    // var mapsAPIKey= "&key=AIzaSyAT4Nz9s8qxKvGCM80aQt-fCGlW4XzL3zs";
+    // var apiKey3= "&key=AIzaSyBCHK89OFcTLSGG1uZBV9u-4Tc53NlqfTQ";
+    var queryURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurant+" + eventCities + "&radius=" + G_distance + apiKey;   
 
     $.ajax({
         url: queryURL,
@@ -76,13 +77,13 @@ function displayGoogleShit() {
             
             var G_maps = $("<div class='G_maps' id='" + G_mapCont +"' >")
 
-
+          //
            var photoRef = response.results[i].photos[0].photo_reference;
-           var apiKey = "&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU"       
+          //  var apiKey = "&key=AIzaSyBn6PzPT-RYHgpew4rKmVGIvENHjQo8-YU"       
             
-           photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoRef + apiKey3;
+           photoURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoRef + apiKey;
 
-        //    create event list 
+            //    create event list 
             var container = $("<div class='eventGoogleResults'>");
             var row1  = $("<tr>");
             var row2  = $("<tr>");
@@ -96,7 +97,11 @@ function displayGoogleShit() {
             G_mapRestName = response.results[i].name;
             bizName = $("<tr class='restTitle'>").text(response.results[i].name );
             // console.log(response.results[i].name);
-            var pricing = $("<tr>").text("Price Rating: " + response.results[i].price_level);
+            var priceRating = response.results[i].price_level;
+              if (priceRating === null || priceRating === undefined) {
+                priceRating = "No Price Rating Available";
+              };
+            var pricing = $("<tr>").text("Price Rating: " + priceRating);
             // console.log(response.results[i].price_level)
             var bizAddess = $("<tr>").text("Address: " + response.results[i].formatted_address)
             // console.log(response.results[i].formatted_address);
@@ -131,7 +136,6 @@ function displayGoogleShit() {
             
             else {
                 infoToPage(i + 1);
-                // console.log(G_mapRestName);
                 
             }
 
@@ -149,7 +153,6 @@ function displayGoogleShit() {
     }
     // End of "displayGoogleShit" function
     displayGoogleShit()
-    // console.log(G_mapRestName)
 
     
 });
@@ -158,8 +161,7 @@ function displayGoogleShit() {
 
 //Google Map Generation function called above when information is appended to the DOM
 function G_initMap(G_Lat,G_Long,G_mapCont) {
-    // var googtitle = document.getElementById(G_mapRestName);
-    console.log(G_mapRestName);
+    // console.log(G_mapRestName);
     var map = new google.maps.Map(document.getElementById(G_mapCont), {
       zoom: 15,
       center: {lat: G_Lat, lng: G_Long}
