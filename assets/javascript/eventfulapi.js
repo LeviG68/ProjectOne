@@ -33,6 +33,7 @@ var lng;
 var geoCode;
 var errorMessage;
 var eventVenueName;
+var mapUrl;
 
 
   // get distance value
@@ -118,19 +119,17 @@ $("#search").on("click", function(event) {
                 var row3  = $("<tr>");
                 var row4  = $("<tr>");
                 var row5  = $("<tr>");
-                var row6  = $("<tr>");
                 var mapcont = "map" + j;
-                var mapLink = "<a href="  + "https://maps.google.com?saddr=Current+Location&daddr=" + lat + "," + lng + " target='_blank'></a>";
-
-                var maps = $("<div class='maps' id='" + mapcont +"' >")
-                $(maps).attr(mapLink);
+                var maps = $("<div class='maps' id='" + mapcont +"' >");
                 var eventTitle =  result.events.event[j].title;
                 var event =  $("<tr class='restTitle'>").html(eventTitle)
                 var eventUrl = "<a href="  + eveUrl + " target='_blank'>Event Website</a>" + " | ";
 
                 eventVenueName = result.events.event[j].venue_name;
                 var eventVenue = $("<tr>").html("Where: " + eventVenueName);
-                var venueUrl = "<a href="  + venueUrl + " target='_blank'>Venue Website</a>";
+                var venueUrl = "<a href="  + venueUrl + " target='_blank'>Venue Website</a>" + " | ";
+                
+                mapUrl ="<a href=https://maps.google.com?saddr=Current+Location&daddr=" + lat + "," + lng + " target='_blank'>Directions</a>";
 
                 var eventCity = result.events.event[j].city_name + ", ";
                     if (eventCity === null) {
@@ -199,24 +198,20 @@ $("#search").on("click", function(event) {
                   else {
                     eventImage = $("<img>").attr("src", randPic);
                   }
-
-
-
                   
             //display results 
                 row1.append(event)
                 row2.append(eventVenue)
                 row3.append(eventAdress)
                 row4.append(eventDateTime)
-                row5.append(eventUrl, venueUrl)
-                
-                var infoDiv = $("<div id='infoDiv'>").append(row1, row2, row3,row4, row5)
-                  
-                container.append(eventImage, infoDiv, maps)
-
+                row5.append(eventUrl, venueUrl, mapUrl)
+                var infoDiv = $("<div class='infoDiv'>").append(row1, row2, row3,row4, row5)
+                var row6  = $("<tr class='imgInfo'>");
+                row6.append(eventImage, maps)
+                container.append(row6, infoDiv)
                 $("#event").append(container);
 
-                // create map for each result            
+            // create map for each result            
                 initMap(lat, lng, mapcont);
                
             }
@@ -228,15 +223,16 @@ $("#search").on("click", function(event) {
 
   // var gapiKey = "AIzaSyBs4pO79zRJlnubLykNxLO6SNNH6gWaPCA"
 
-  function initMap(lat,lng,mapcont) {
-    var map = new google.maps.Map(document.getElementById(mapcont), {
-      zoom: 12,
+  function initMap(lat,lng,mapcont,mapUrl) {
+    var maper = new google.maps.Map(document.getElementById(mapcont), {
+      zoom: 15,
       center: {lat: lat, lng: lng}
     });
   
     var marker = new google.maps.Marker({
       position: {lat: lat, lng: lng},
-      map: map,
+      map: maper,
       title: eventVenueName
     });
+    
   }
