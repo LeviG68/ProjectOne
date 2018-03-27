@@ -32,9 +32,9 @@ $("#d5").on("click", function(event) {
     // console.log("distance" + G_distance)
   });
 
+
 //On Click Function for City,State Search
 $("#search").on("click", function(event) {
-
     var eventCities =  $("#cityState").val().trim();
 
     $("#google").empty();
@@ -57,15 +57,8 @@ function displayGoogleShit() {
       })
 
       .then(function(response) {
-        // console.log(info);
-        // console.log(response);
-
-        // for (var i =0; i < 10; i++) {
-
-        infoToPage(0);        
-
+        infoToPage(0);
         function infoToPage(i) {
-
            setTimeout(function() {
             
             //Google Map Shit
@@ -147,20 +140,17 @@ function displayGoogleShit() {
             
             
         }
-        //end of info to page function (recursive)
-          
+        //end of info to page function
       });
-      //end of .then Function
-      
-    }
+      //End of .then function(response)        
+      displayGoogleShit()
+      // console.log(G_mapRestName)
+    };
     // End of "displayGoogleShit" function
-    displayGoogleShit();
+  });
+  //End of OnClick function     
 
-    
-    
-});
 
-//End of OnClick function
 function paginateGoog() {
   $('#google').easyPaginate({
     paginateElement: 'div.eventGoogleResults',
@@ -185,3 +175,5 @@ function G_initMap(G_Lat,G_Long,G_mapCont) {
       
     });
   }
+
+
