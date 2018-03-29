@@ -6,10 +6,32 @@ $(document).ready(function(){
     }
   });
 
-function yelpPage () {
-    
-}
 
+$("#tabsContainer").hide();
+    $("#googleRest").hide();
+    $("#dateEvent").hide();
+    
+
+    $("#search").on("click", function(){
+        $("#intro").hide();
+        $("#tabsContainer").show();
+        restaurantShow();
+        $("#dateEvent").show();
+    });
+
+    $("#restTab").on("click", function(){
+        restaurantShow();
+    });
+
+    function restaurantShow() {
+        $("#googleRest").show();
+        $("#dateEvent").hide()
+    }
+
+    $("#eventTab").on("click", function(){
+        $("#dateEvent").show();
+        $("#googleRest").hide();
+    })
 
 
 // API for google fireBase 
@@ -216,3 +238,4 @@ function yelpPage () {
 
     }, 3000);
   }
+
