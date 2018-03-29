@@ -12,7 +12,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     </head>
-    <body>
+    <body style="background-image: url(images/pexels-photo-754261.jpeg)" class="backgroundImage">
         <div class="row">
             <div class="col s12">
                 <nav class="nav-extended">
@@ -38,17 +38,22 @@
             </div> 
         </div>
             <div class="row" id="intro">
-                <section class="container">
+                <!-- <div class="paralax"><img src="images/pexels-photo-897232.jpeg" alt="Unsplashed background img 1"></div> -->
+                <section class="container opening"> 
                     <h3>Welcome to DAT[R]!  The one stop date night planner.  Please enter a location above and we will show you the highest rated restaurants and the events closest to that location. </h3>
                     <h3>Have a great date!</h3>
                 </section>
             </div>
             <section id="mid">
                 <div class="row">
-                    <div class="container col s12" id="tab">
-                        <ul class="tabs">
-                            <li class="tab col s6" id="restTab"><a href="#Restaurants" class="active">Restaurants</a></li>
-                            <li class="tab col s6" id="eventTab"><a href="#test2">Events</a></li>
+                    <div class="container col s12">
+                        <ul class="tabs" id="tabsContainer">
+                            <li class="tab col s6" id="restTab">
+                                <a class="active" href="#">Restaurants</a>
+                            </li>
+                            <li class="tab col s6" id="eventTab">
+                                <a href="#">Events</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -56,11 +61,6 @@
                     <div class="col s12 m12 l6">
                         <table>
                             <thead>
-                                <tr>
-                                    <th>Restaurant Name</th>
-                                    <th>Rating</th>                      
-                                    <th>Price Level</th>
-                                </tr>
                             </thead>
                             <tbody id="google">
                                 
@@ -73,7 +73,6 @@
                     <div class="card-panel" id="dateEvent">
                         <table>
                             <thead>
-                            <th>Events</th>
                             </thead>
                             <tbody id="event">
                                 
@@ -91,7 +90,7 @@
       <script type="text/javascript" src="assets/javascript/materialize.min.js"></script>
       <script type="text/javascript" src="assets/javascript/eventfulapi.js"></script> 
       <script type="text/javascript" src="assets/javascript/pages.js"></script>
-      <script src="jquery.easyPaginate.js"></script>
+      <script src="assets/javascript/jquery.easyPaginate.js"></script>
       <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfnwnAUCBndGMz5DfMTV7uQaXP6MhgkgM"></script>
     </body>

@@ -4,7 +4,6 @@
 
 html, body {
     height: 100%;
-    background-image: url(//alcohol-blur-bright-95949.jpg);
 }
 
 h1, .brand-logo, h3{
@@ -25,6 +24,17 @@ font-weight: 200px;
 
 #intro {
     margin-top: 100px;
+}
+
+#intro .opening {
+    /* background-image: url("images/pexels-photo-421927.jpeg"); */
+    color: whitesmoke;
+}
+
+.backgroundImage {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
 }
 
 /* #restaurants a {

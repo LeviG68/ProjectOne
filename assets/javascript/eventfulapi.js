@@ -5,50 +5,77 @@
       }
     });
  
-//global var
-  var apiKey = "&app_key=8BZTgpMGJnMV5sF4";
-  var eventCity;
-  var sort = "&sort_order=popularity"; 
-  var distance;
-  var postalCode;
-  var eventFound = false;
-  var lat;
-  var lng;
-  var geoCode;
-  var errorMessage;
-  var eventVenueName;
-  var mapUrl;
-  var catId = [
-              "music",
-              "comedy",
-              // "family_fun_kids",
-              // "festivals_parades",
-              "movies_film",
-              "art",
-              "attractions",
-              "singles_solcial",
-              // "outdoors_recreation",
-              "performing_arts",
-              "sports"
-              ];
+//eventful api call   
+var apiKey = "&app_key=8BZTgpMGJnMV5sF4";
+var eventCity;
+var sort = "&sort_order=popularity"; 
+var distance;
+var postalCode;
+var eventFound = false;
+// console.log(eventCity)
+var catId = [
+            "music",
+            "comedy",
+            // "family_fun_kids",
+            // "festivals_parades",
+            "movies_film",
+            "art",
+            "attractions",
+            "singles_solcial",
+            // "outdoors_recreation",
+            "performing_arts",
+            "sports"
+            ]
 
-// get distance value
-    $("#d5").on("click", function(event) {
-      distance = 5;
-      console.log("distance" + distance)
-      });
-    $("#d10").on("click", function(event) {
-      distance = 10;
-      console.log("distance" + distance)
-      });
-    $("#d25").on("click", function(event) {
-      distance = 25;
-      console.log("distance" + distance)
-      });
-    $("#d50").on("click", function(event) {
-      distance = 50;
-      console.log("distance" + distance)
-      });
+var lat;
+var lng;
+var geoCode;
+var errorMessage;
+var eventVenueName;
+var mapUrl;
+
+
+  // get distance value
+  $("#d5").on("click", function(event) {
+    distance = 5;
+    console.log("distance" + distance)
+  });
+  $("#d10").on("click", function(event) {
+    distance = 10;
+    console.log("distance" + distance)
+  });
+  $("#d25").on("click", function(event) {
+    distance = 25;
+    console.log("distance" + distance)
+  });
+  $("#d50").on("click", function(event) {
+    distance = 50;
+    console.log("distance" + distance)
+  });
+
+
+$("#search").on("click", function(event) {
+  $("#event").empty();
+  // console.log("click worked")
+  eventCity =  $("#cityState").val().trim();
+
+  // postalCode =  $("#zip").val().trim();
+
+  if (!distance){
+    errorMessage = $("#error").text("Please select a distance to increase the accuracy of your results and try your search again!");
+    $("#error").show();
+    function verifyDistance() {
+      setTimeout(function(){
+        $("#error").hide();;
+         }, 3000);
+    }
+    verifyDistance();
+  }
+
+  
+
+  var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" +  eventCity + "&category=" + catId + "&date=Today" + sort + "&within=" + distance;
+
 
 // onclick search for an event       
     $("#search").on("click", function(event) {
