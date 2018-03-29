@@ -8,6 +8,7 @@ $(document).ready(function(){
         $("#intro").hide();
         $("#tab").show();
         restaurantShow();
+        $("#dateEvent").show();
     });
 
     $("#restTab").on("click", function(){
@@ -36,11 +37,11 @@ $(document).ready(function(){
     //     // effect: 'climb'
     // });
 
-    $('#event').easyPaginate({
-        paginateElement: 'tr',
-        elementsPerPage: 3,
-        // effect: 'climb'
-    });
+    // $('#event').easyPaginate({
+    //     paginateElement: 'tr',
+    //     elementsPerPage: 3,
+    //     // effect: 'climb'
+    // });
 
 // var list = [];
 // var pageList = [];

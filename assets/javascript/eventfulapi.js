@@ -12,6 +12,7 @@
   var distance;
   var postalCode;
   var eventFound = false;
+  console.log(eventCity);
   var lat;
   var lng;
   var geoCode;
@@ -31,6 +32,8 @@
               "performing_arts",
               "sports"
               ];
+    var pagarray =[];
+    var pageSize = 12;
 
 // get distance value
     $("#d5").on("click", function(event) {
@@ -53,21 +56,22 @@
 // onclick search for an event       
     $("#search").on("click", function(event) {
       $("#event").empty();
+      
 // if a distance is not selected poulate an error message but still allow search      
-          if (!distance){
-              errorMessage = $("#error").text("Please select a distance to increase the accuracy of your results and try your search again!");
-                $("#error").show();
-                  function verifyDistance() {
-                    setTimeout(function(){
-                    $("#error").hide();;
-                  }, 3000);
-                }
-              verifyDistance();
-            }
+          // if (!distance){
+          //     errorMessage = $("#error").text("For best results, please select a distance and try your search again!");
+          //       $("#error").show();
+          //         function verifyDistance() {
+          //           setTimeout(function(){
+          //           $("#error").hide();;
+          //         }, 3000);
+          //       }
+          //     verifyDistance();
+          //   }
   
     eventCity =  $("#cityState").val().trim();
-    
-    var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" +  eventCity + "&category=" + catId + "&date=Today" + sort + "&within=" + distance;
+    console.log(eventCity);
+    var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" +  eventCity + "&category=" + catId + "&date=Today" + sort + "&within=" + distance + "&page_size=" + pageSize;
 
     $.ajax({
         url: queryURL,
@@ -75,19 +79,18 @@
         }).then(function(response) {
           var data = response;
           var result = JSON.parse(response);
-        
+          eventCity =  $("#cityState").val().trim();
+          console.log(eventCity);
         // when serach is clicked if there are no results or no city, state is typed it, pop an error and stop serach 
-          if (result.events == null || eventCity=="") {    
+          if (result.events === null || eventCity === "") { 
+            console.log(eventCity);   
               errorMessage = $("#error").text("Please enter a vaild City, State and try your search again");
               $("#error").show();
-                function verifyCitystate() {
-                  setTimeout(function(){
-                    $("#error").hide();;
-                  }, 3000);
-                }
-                verifyCitystate();
+              verifyCitystate();
             }
+
             else {
+
               for (j=0; j < data.length; j++) {
                 lat = parseFloat(result.events.event[j].latitude);
                 lng = parseFloat(result.events.event[j].longitude);
@@ -95,7 +98,7 @@
                 var eveUrl = result.events.event[j].url;
                 var venueUrl = result.events.event[j].venue_url
                 //create event list 
-                  var container = $("<div id='eventResults'>");
+                  var container = $("<div class='eventResults'>");
                   var row1  = $("<tr>");
                   var row2  = $("<tr>");
                   var row3  = $("<tr>");
@@ -154,25 +157,24 @@
                   var eventImage;
                   //create a list of images to use when is not provided by the eventful api
                   var palceholderpics = [
-                    "assets/images/pexels-photo-89485.jpeg",
-                    "assets/images/pexels-photo-421927.jpeg",
-                    "assets/images/pexels-photo-450597.jpeg",
-                    "assets/images/pexels-photo-700975.jpeg",
-                    "assets/images/pexels-photo-771881.jpeg",
-                    "assets/images/pexels-photo-90440.jpeg",
-                    "assets/images/pexels-photo-92870.jpeg",
-                    "assets/images/pexels-photo-178996.jpeg",
-                    "assets/images/pexels-photo-357275.jpeg",
-                    "assets/images/pexels-photo-247620.jpeg",
-                    "assets/images/pexels-photo-269126.jpeg",
-                    "assets/images/pexels-photo-128428.jpeg",
-                    "assets/images/pexels-photo-261828.jpeg",
-                    "assets/images/woman-bench-stand-by-blonde-157622.jpeg",
-                    "assets/images/cup-tee-teacup-glass-cup-39471.jpeg",
-                    "assets/images/pexels-photo-897232.jpeg"
+                    "images/pexels-photo-89485.jpeg",
+                    "images/pexels-photo-421927.jpeg",
+                    "images/pexels-photo-450597.jpeg",
+                    "images/pexels-photo-700975.jpeg",
+                    "images/pexels-photo-771881.jpeg",
+                    "images/pexels-photo-90440.jpeg",
+                    "images/pexels-photo-92870.jpeg",
+                    "images/pexels-photo-178996.jpeg",
+                    "images/pexels-photo-357275.jpeg",
+                    "images/pexels-photo-247620.jpeg",
+                    "images/pexels-photo-269126.jpeg",
+                    "images/pexels-photo-128428.jpeg",
+                    "images/pexels-photo-261828.jpeg",
+                    "images/woman-bench-stand-by-blonde-157622.jpeg",
+                    "images/cup-tee-teacup-glass-cup-39471.jpeg",
+                    "images/pexels-photo-897232.jpeg"
                   ]
                   var randPic = palceholderpics[Math.floor(Math.random() * palceholderpics.length)];
-
               //check for an image, if there is not one, place a stock image
                   if (eventImg != null) {
                         eventImage = $("<img>").attr("src","http:" + result.events.event[j].image.medium.url);
@@ -180,7 +182,6 @@
                     else {
                         eventImage = $("<img>").attr("src", randPic);
                       }
-                    
               //display results 
                     row1.append(event)
                     row2.append(eventVenue)
@@ -192,13 +193,18 @@
                     row6.append(eventImage, maps)
                     container.append(row6, infoDiv)
                     $("#event").append(container);
+                    pagarray.push(container);
+                    console.log(pagarray);
                 // create map for each result            
                     initMap(lat, lng, mapcont);
+
+                    setTimeout(function(){
+                      paginateEvent();
+                    }, 3000);
               }
             }
           });
         });  
-
 // create a map from googel maps for each event
     function initMap(lat,lng,mapcont) {
       var maper = new google.maps.Map(document.getElementById(mapcont), {
@@ -211,4 +217,18 @@
         map: maper,
         title: eventVenueName
         });
+      }
+
+    function paginateEvent() {
+      $("#event").easyPaginate({
+        paginateElement: "div.eventResults",
+        elementsPerPage: 3
+        // effect: 'climb'
+        });
+      }
+
+      function verifyCitystate() {
+        setTimeout(function(){
+          $("#error").hide();
+        }, 3000);
       }

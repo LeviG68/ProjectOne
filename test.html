@@ -25,16 +25,17 @@
                                 <a class='dropdown-button btn purple darken-1' data-activates='distanceDropdown'>Distance</a>
                                 <!-- Dropdown Structure -->
                                 <ul id='distanceDropdown' class='dropdown-content'>
-                                    <li><a >5 miles</a></li>
-                                    <li><a >10 miles</a></li>
-                                    <li><a >25 miles</a></li>
-                                    <li><a >50 miles</a></li>
+                                    <li id="#d5"><a >5 miles</a></li>
+                                    <li id="#d10"><a >10 miles</a></li>
+                                    <li id="#d25"><a >25 miles</a></li>
+                                    <li id="#d50"><a >50 miles</a></li>
                                 </ul>
                             </li>
                             <li><label id="search" class="label-icon waves-effect" for="search"><i class="right material-icons magGlass">search</i></label></li>
                         </ul>
                     </div>
                 </nav>
+                <div id="error"></div>
             </div> 
         </div>
             <div class="row" id="intro">
@@ -47,8 +48,8 @@
                 <div class="row">
                     <div class="container col s12" id="tab">
                         <ul class="tabs">
-                            <li class="tab col s6" id="restTab"><a href="#Restaurants" class="active">Restaurants</a></li>
-                            <li class="tab col s6" id="eventTab"><a href="#test2">Events</a></li>
+                            <li class="tab col s6" id="restTab"><a href="#Restaurants">Restaurants</a></li>
+                            <li class="tab col s6" id="eventTab"><a href="#Events">Events</a></li>
                         </ul>
                     </div>
                 </div>
@@ -56,15 +57,9 @@
                     <div class="col s12 m12 l6">
                         <table>
                             <thead>
-                                <tr>
-                                    <th>Restaurant Name</th>
-                                    <th>Rating</th>                      
-                                    <th>Price Level</th>
-                                </tr>
+                            <th>Restaurants</th>
                             </thead>
-                            <tbody id="google">
-                                
-                            </tbody>
+                            <tbody id="google"></tbody>
                         </table>
                     </div>
                 </div>
@@ -75,9 +70,7 @@
                             <thead>
                             <th>Events</th>
                             </thead>
-                            <tbody id="event">
-                                
-                            </tbody>
+                            <tbody id="event"></tbody>
                         </table>
                     </div>
                 </div>
@@ -87,9 +80,9 @@
         
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="assets/javascript/eventfulapi.js"></script> 
       <script src="assets/javascript/googleapi.js"></script>
       <script type="text/javascript" src="assets/javascript/materialize.min.js"></script>
-      <script type="text/javascript" src="assets/javascript/eventfulapi.js"></script> 
       <script type="text/javascript" src="assets/javascript/pages.js"></script>
       <script src="jquery.easyPaginate.js"></script>
       <script async defer
