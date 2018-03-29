@@ -33,24 +33,6 @@ $("#tabsContainer").hide();
         $("#googleRest").hide();
     })
 
-<<<<<<< HEAD
-    // Pagination code
-
-    // $('#google').easyPaginate({
-    //     paginateElement: 'tr',
-    //     elementsPerPage: 3,
-    //     // effect: 'climb'
-    // });
-
-    // $('#google').easyPaginate({
-    //     paginateElement: 'tr',
-    //     elementsPerPage: 3,
-    //     // effect: 'climb'
-    // });
-
-    // $('.tabs').tabs();
-   
-=======
 
 
 // API for google fireBase 
@@ -153,12 +135,12 @@ $("#tabsContainer").hide();
         password = $("#signInpassword").val().trim();
 
     if (email === ""){
-      $("#emailErrormessage").text("Asshole");
+      $("#emailErrormessage").text("Please enter in an email");
       $("#emailErrormessage").show();
       noshowemail();
     } 
     if (password === ""){
-      $("#passWorderror").text("Shit");
+      $("#passWorderror").text("Please enter a password");
       $("#passWorderror").show();
       noshowpassword();
     } 
@@ -170,10 +152,9 @@ $("#tabsContainer").hide();
       .then(function(response){
         console.log('then');
         if (response){
-          window.location.href = "index.html";
+          window.location.href = "home.html";
           
         }
->>>>>>> test
   
         console.log(response);
         
@@ -192,7 +173,7 @@ $("#tabsContainer").hide();
         } else if(error.code=== "auth/wrong-password") {
       
           if (($(password).val(""))){
-            $("#passWorderror").text("Shit")
+            $("#passWorderror").text("Please enter a password")
             $("#passworderror").show();
             noshowpassword();
           }
@@ -254,7 +235,7 @@ $("#tabsContainer").hide();
   }
   function welcome(){
     setTimeout(function(){
-      window.location.href = "index.html";
+      window.location.href = "home.html";
 
     }, 3000);
   }
