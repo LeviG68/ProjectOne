@@ -73,6 +73,8 @@ $("#search").on("click", function(event) {
     verifyDistance();
   }
 
+  
+
   var queryURL = "http://api.eventful.com/json/events/search?" + apiKey + "&location=" +  eventCity + "&category=" + catId + "&date=Today" + sort + "&within=" + distance;
 
 
