@@ -1,59 +1,4 @@
 //bypass cors
-<<<<<<< HEAD
-  jQuery.ajaxPrefilter(function(options) {
-    if (options.crossDomain && jQuery.support.cors) {
-        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-      }
-    });
- 
-//global var
-  var apiKey = "&app_key=8BZTgpMGJnMV5sF4";
-  var eventCity;
-  var sort = "&sort_order=popularity"; 
-  var distance;
-  var postalCode;
-  var eventFound = false;
-  console.log(eventCity);
-  var lat;
-  var lng;
-  var geoCode;
-  var errorMessage;
-  var eventVenueName;
-  var mapUrl;
-  var catId = [
-              "music",
-              "comedy",
-              // "family_fun_kids",
-              // "festivals_parades",
-              "movies_film",
-              "art",
-              "attractions",
-              "singles_solcial",
-              // "outdoors_recreation",
-              "performing_arts",
-              "sports"
-              ];
-    var pagarray =[];
-    var pageSize = 12;
-
-// get distance value
-    $("#d5").on("click", function(event) {
-      distance = 5;
-      console.log("distance" + distance)
-      });
-    $("#d10").on("click", function(event) {
-      distance = 10;
-      console.log("distance" + distance)
-      });
-    $("#d25").on("click", function(event) {
-      distance = 25;
-      console.log("distance" + distance)
-      });
-    $("#d50").on("click", function(event) {
-      distance = 50;
-      console.log("distance" + distance)
-      });
-=======
 jQuery.ajaxPrefilter(function(options) {
   if (options.crossDomain && jQuery.support.cors) {
       options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
@@ -107,7 +52,6 @@ var catId = [
     distance = 50;
     console.log("distance" + distance)
     });
->>>>>>> test
 
 // onclick search for an event       
   $("#search").on("click", function(event) {

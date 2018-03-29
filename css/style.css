@@ -182,3 +182,7 @@ img {
     font-size: 50px;
     color: purple;
 }
+
+#noSignInEmail, #noSignInPassword, #emailErrormessage, #passWorderror {
+    color: red;
+}
