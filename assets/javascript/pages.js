@@ -12,6 +12,7 @@ $(document).ready(function(){
         $("#intro").hide();
         $("#tabsContainer").show();
         restaurantShow();
+        $("#dateEvent").show();
     });
 
     $("#restTab").on("click", function(){
@@ -28,21 +29,4 @@ $(document).ready(function(){
         $("#googleRest").hide();
     })
 
-    // Pagination code
-
-    // $('#google').easyPaginate({
-    //     paginateElement: 'tr',
-    //     elementsPerPage: 3,
-    //     // effect: 'climb'
-    // });
-
-    // $('#google').easyPaginate({
-    //     paginateElement: 'tr',
-    //     elementsPerPage: 3,
-    //     // effect: 'climb'
-    // });
-
-    // $('.tabs').tabs();
-   
-  
-})
+});
