@@ -224,7 +224,8 @@ $("#search").on("click", function(event) {
               }
             }
           });
-        });  
+        });
+      });      
 
 // create a map from googel maps for each event
     function initMap(lat,lng,mapcont) {
