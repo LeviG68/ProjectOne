@@ -31,7 +31,7 @@ h1, .brand-logo, h3{
 }
 
 .navWrapper.center-align{
-height: 70%;
+height: 100%;
 }
 
 #logoContainer, {
@@ -87,7 +87,7 @@ img {
     height: 120px;
     width: 120px;
     border-style: solid;
-    border-color: lightgray;
+    border-color: blueviolet;
     border-width: 1px;
     margin: 5px;
 }
@@ -109,15 +109,15 @@ img {
     display: inline-block;
 }
 
-.imgInfo {
+/* .imgInfo {
     top: 0;
     width: 100%;
     display: inline-block;
- }
+ } */
 
-#eventResults {
+.eventResults {
     border-style: solid;
-    border-bottom-color: rgb(175, 66, 66);
+    border-bottom-color: blueviolet;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -127,7 +127,7 @@ img {
 
 .eventGoogleResults {
     border-style: solid;
-    border-bottom-color: grey;
+    border-bottom-color: blueviolet;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -146,14 +146,14 @@ img {
 
 .maps {
     height: 120px;
-    width: 77%;
-    background-color: grey;
+    width: 75%;
+    /* background-color: grey; */
     display: inline-block; 
     margin: 5px;
   }
 
 #easyPaginate {
-      width:300px;
+      width:100%;
     }
 
 .easyPaginateNav a {
@@ -169,9 +169,14 @@ img {
 }
 .G_maps {
     
-    width: 77%;
+    width: 75%;
     height: 120px;
-    background-color: grey;
+    /* background-color: grey; */
     display: inline-block; 
     margin: 5px;
 }  
+#welcome{
+    font-weight: 500;
+    font-size: 50px;
+    color: purple;
+}
