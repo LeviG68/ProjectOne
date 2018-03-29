@@ -18,7 +18,8 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+$("#search").on("click", function(event) {
+    $(".easyPaginateNav").remove();
 (function($){
 $.fn.easyPaginate = function (options) {
     var defaults = {
@@ -225,7 +226,10 @@ $.fn.easyPaginate = function (options) {
         }
     });
 };
-})(jQuery);
+
+})
+(jQuery)});
+
 // © 2018 GitHub, Inc.
 // Terms
 // Privacy
