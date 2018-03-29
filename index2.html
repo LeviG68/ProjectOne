@@ -28,7 +28,7 @@
       <!-- <h1 class="title">Me</h1> -->
       </div>
       <div class="row center">
-        <h5 class="header col s12 center-align">“If I need a psychological evaluation, I’ll do it myself.” – Prince</h5>
+        <h3 class="header col s12 center-align" id= "welcome">“If I need a psychological evaluation, I’ll do it myself.” – Prince</h3>
       </div>
       <div class="row">
           <!-- originally a form -->
@@ -39,10 +39,15 @@
                 <div class="input-field">
                   <input id="email" type="email" class="validate">
                   <label class="active" for="email">Email</label>
+                  <div id="noSignInEmail">
+                    
+                  </div>
                 </div>
                 <div class="input-field">
                     <input input="Password" id="password" type="password" class="validate" >
                     <label  for="password">Password</label>
+                    <div id="noSignInPassword">
+                    </div>
                 </div>
                 <div>
                     <button class=" purple btn waves-effect waves-light" id="submit" type="submit" name="action">Submit
@@ -55,10 +60,14 @@
                 <div class="input-field">
                     <input id="signInemail" type="email" class="validate">
                     <label class="active" for="email">Email</label>
+                    <div id ="emailErrormessage">
+                    </div>
                   </div>
                 <div class="input-field">
                   <input input="Password" id="signInpassword" type="password" class="validate" >
                   <label for="password">Password</label>
+                  <div id="passWorderror">
+                  </div>
               </div>
               <div>
               <button class=" purple btn waves-effect waves-light" id="signIn" type="submit" name="action">Sign In
