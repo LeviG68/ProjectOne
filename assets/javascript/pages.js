@@ -33,6 +33,24 @@ $("#tabsContainer").hide();
         $("#googleRest").hide();
     })
 
+<<<<<<< HEAD
+    // Pagination code
+
+    // $('#google').easyPaginate({
+    //     paginateElement: 'tr',
+    //     elementsPerPage: 3,
+    //     // effect: 'climb'
+    // });
+
+    // $('#google').easyPaginate({
+    //     paginateElement: 'tr',
+    //     elementsPerPage: 3,
+    //     // effect: 'climb'
+    // });
+
+    // $('.tabs').tabs();
+   
+=======
 
 // API for google fireBase 
   // Initialize Firebase
@@ -154,6 +172,7 @@ $("#tabsContainer").hide();
           window.location.href = "index.html";
           
         }
+>>>>>>> test
   
         console.log(response);
         
