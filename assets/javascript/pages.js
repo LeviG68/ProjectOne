@@ -36,7 +36,7 @@ $(document).ready(function(){
     //     // effect: 'climb'
     // });
 
-    // $('#event').easyPaginate({
+    // $('#google').easyPaginate({
     //     paginateElement: 'tr',
     //     elementsPerPage: 3,
     //     // effect: 'climb'
