@@ -32,13 +32,14 @@ $("#d50").on("click", function(event) {
   // console.log("distance" + G_distance)
 });
 
+
 //On Click Function for City,State Search
 $("#search").on("click", function(event) {
-
   var eventCities =  $("#cityState").val().trim();
 
   $("#google").empty();
 
+  
 function displayGoogleShit() {
 
   var photoURL;
@@ -57,15 +58,8 @@ function displayGoogleShit() {
     })
 
     .then(function(response) {
-      // console.log(info);
-      // console.log(response);
-
-      // for (var i =0; i < 10; i++) {
-
       infoToPage(0);        
-
       function infoToPage(i) {
-
          setTimeout(function() {
           
           //Google Map Shit
@@ -90,10 +84,7 @@ function displayGoogleShit() {
           var row3  = $("<tr>");
           var row4  = $("<tr>");
           var row5  = $("<tr>");
-
-  
           var pic = $("<img>").attr("src", photoURL);
-          
           G_mapRestName = response.results[i].name;
           bizName = $("<tr class='restTitle'>").text(response.results[i].name );
           // console.log(response.results[i].name);
@@ -108,67 +99,46 @@ function displayGoogleShit() {
           var googleRating = $("<tr>").text("Google Rating: " + response.results[i].rating);
           // console.log(response.results[i].rating);
           var G_mapUrl ="<a href=https://maps.google.com?saddr=Current+Location&daddr=" + G_Lat + "," + G_Long + " target='_blank'>Directions</a>";
-
           var googPlacesSite = $("<tr>").html("Google Places: " + response.results[i].photos[0].html_attributions + " | " + G_mapUrl);
           // console.log(response.results[i].photos[0].html_attributions);
-          
-
           row1.append(bizName)
           row2.append(pricing)
           row3.append(googleRating)
           row4.append(bizAddess)
           row5.append(googPlacesSite)
-
           //dynamically create a div in the Google Body
           var infoGoogDiv = $("<div class='infoGoogDiv'>").append(row1, row2, row3, row4, row5);
           var G_row6 = $("<tr class='imgInfo'>");
           G_row6.append(pic, G_maps);
           container.append(G_row6, infoGoogDiv);
-
           $("#google").append(container);
           //call google map function
-         G_initMap(G_Lat,G_Long,G_mapCont);
-         
-
+          G_initMap(G_Lat,G_Long,G_mapCont);
           //safe guards in recursive function
-          if (i >= 9) {
-            paginateGoog();
+          if (i >= 11) {
+              paginateGoog();
               return;
-          }
-          
+            }
           else {
-              infoToPage(i + 1);
-              
-          }
-
-
-          }, 500);     
-          
-          
-          
+              infoToPage(i + 1);   
+            }
+          }, 500);        
       }
-      //end of info to page function (recursive)
-        
+        //end of info to page function
     });
     //end of .then Function
-    
   }
   // End of "displayGoogleShit" function
-  displayGoogleShit();
-
-  
-  
+    displayGoogleShit()
 });
-
 //End of OnClick function
 function paginateGoog() {
 $('#google').easyPaginate({
   paginateElement: 'div.eventGoogleResults',
-  elementsPerPage: 3,
+  elementsPerPage: 3
   // effect: 'climb'
-});
-
-};
+  });
+}
 
 //Google Map Generation function called above when information is appended to the DOM
 function G_initMap(G_Lat,G_Long,G_mapCont) {
