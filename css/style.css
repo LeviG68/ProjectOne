@@ -2,6 +2,23 @@
     outline: 1px solid red !important;
    } */
 
+.tabs .tab a.active,
+.tabs .tab a {
+    color: rgb(63, 3, 63);
+}
+
+.tabs .indicator {
+    background-color: #4a148c;
+    height: 4px;
+}
+
+
+/* .purpleRain {
+    color: rgb(63, 3, 63);
+} */
+
+
+
 html, body {
     height: 100%;
 }
