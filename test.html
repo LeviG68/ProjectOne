@@ -7,7 +7,6 @@
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
       <link rel="stylesheet" href="css/style.css">
-      <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"> -->
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
@@ -25,16 +24,17 @@
                                 <a class='dropdown-button btn purple darken-1' data-activates='distanceDropdown'>Distance</a>
                                 <!-- Dropdown Structure -->
                                 <ul id='distanceDropdown' class='dropdown-content'>
-                                    <li><a >5 miles</a></li>
-                                    <li><a >10 miles</a></li>
-                                    <li><a >25 miles</a></li>
-                                    <li><a >50 miles</a></li>
+                                    <li id="#d5"><a >5 miles</a></li>
+                                    <li id="#d10"><a >10 miles</a></li>
+                                    <li id="#d25"><a >25 miles</a></li>
+                                    <li id="#d50"><a >50 miles</a></li>
                                 </ul>
                             </li>
                             <li><label id="search" class="label-icon waves-effect" for="search"><i class="right material-icons magGlass">search</i></label></li>
                         </ul>
                     </div>
                 </nav>
+                <div id="error"></div>
             </div> 
         </div>
             <div class="row" id="intro">
@@ -46,7 +46,7 @@
             </div>
             <section id="mid">
                 <div class="row">
-                    <div class="container col s12">
+                    <div class="col s12">
                         <ul class="tabs" id="tabsContainer">
                             <li class="tab col s6" id="restTab">
                                 <a class="active purpleRain" href="#">Restaurants</a>
@@ -68,27 +68,30 @@
                         </table>
                     </div>
                 </div>
-            </div> 
-            <!-- <div class="row">  -->
-                    <div class="card-panel" id="dateEvent">
-                        <table>
-                            <thead>
-                            </thead>
-                            <tbody id="event">
-                                
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
+            <div class="card-panel" id="googleRest">
+                <div class="col s12 m12 l6">
+                    <table>
+                        <thead>
+                        </thead>
+                        <tbody id="google"></tbody>
+                    </table>
                 </div>
             </div>
+                <div class="card-panel" id="dateEvent">
+                    <table>
+                        <thead>
+                        </thead>
+                        <tbody id="event"></tbody>
+                    </table>
+                </div>
         </section>
-      <!-- </div>     -->
         
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" src="assets/javascript/eventfulapi.js"></script> 
       <script src="assets/javascript/googleapi.js"></script>
       <script type="text/javascript" src="assets/javascript/materialize.min.js"></script>
-      <script type="text/javascript" src="assets/javascript/eventfulapi.js"></script> 
       <script type="text/javascript" src="assets/javascript/pages.js"></script>
       <script src="assets/javascript/jquery.easyPaginate.js"></script>
       <script async defer
